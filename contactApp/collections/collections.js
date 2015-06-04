@@ -1,0 +1,1 @@
+Meteor.Contact = new Mongo.Collection('contact');
