@@ -1,9 +1,17 @@
 'use strict';
 
 Template.addContact.events({
-   '#form add': function (e) {
-      e.preventDefault();
-      
-      
-   } 
+    'submit #formAdd': function(e) {
+        e.preventDefault();
+
+        var name = $('#contactName').val();
+        var email = $('#email').val();
+        var age = $('#age').val();
+
+        Meteor.call('insertContact', {
+            name: name,
+            email: email,
+            age: age
+        });
+    }
 });
