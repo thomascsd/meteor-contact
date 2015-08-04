@@ -1,15 +1,24 @@
 'use strict';
 
 Meteor.publish('contactList', function() {
-  return Meteor.Contact.find({});
+  return Contacts.find({});
 });
 
 Meteor.methods({
   'insertContact': function(contact) {
-    Meteor.Contact.insert({
+    Contacts.insert({
       name: contact.name,
       email: contact.email,
       age: contact.age
     });
-  }
+  },
+  'updateContact': function(contact) {
+    Contacts.update(contact.id, {
+        $set: {
+          name: contact.name,
+          email: contact.email,
+          age: contact.age
+        }
+      });
+    }
 });
