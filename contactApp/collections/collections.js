@@ -1,1 +1,1 @@
-Meteor.Contact = new Mongo.Collection('contact');
+Contacts = new Mongo.Collection('contacts');
