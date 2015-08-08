@@ -1,0 +1,37 @@
+<template name="list">
+  <div>
+    {{#each contacts}}
+    <div class="well" style="display:{{showList}};">
+      <h3>{{name}}</h3>
+      <p>
+        {{email}}
+        <br> {{age}}
+      </p>
+      <input type="button" class="btn btn-primary contactModiy" value="Modify" />
+    </div>
+    <div class="editor panel panel-primary" style="display:{{showEditor}};">
+      <div class="panel-body">
+        <form method="post" actoin="#">
+          <div class="form-group">
+            <label for="contactName">Name</label>
+            <input type="text" name="contactName" class="form-control contactName" value="{{name}}" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" class="form-control email" value="{{email}}" />
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" class="form-control age" value={{age}} />
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Update" name="update" class="btn btn-primary update" />
+            <input type="button" class="btn btn-primary contactCancel" value="Cancel" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    {{/each}}
+  </div>
+</template>
