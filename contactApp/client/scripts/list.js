@@ -6,9 +6,6 @@ function getUpdateMode(currentId) {
     var updateMode = Session.get('updateMode') || false;
     var selectedId = Session.get('selectedId');
 
-    console.log('currentId:' + currentId);
-    console.log('selectedId:' + selectedId);
-
     if (currentId === selectedId) {
         return updateMode;
     }
@@ -19,7 +16,17 @@ function getUpdateMode(currentId) {
 
 Template.list.helpers({
     contacts: function() {
-        return Contacts.find();
+        var text = Session.get('searchText');
+
+        if (text) {
+            return Contacts.find({
+                name: text
+            });
+        } else {
+            return Contacts.find();
+        }
+
+
     },
     showList: function() {
         var updateMode = getUpdateMode(this._id); //Session.get('updateMode') || false;
@@ -54,6 +61,5 @@ Template.list.events({
         });
 
     }
-
 
 });
